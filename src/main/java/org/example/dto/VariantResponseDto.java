@@ -1,4 +1,4 @@
-package com.eduvariant.dto;
+package org.example.dto;
 
 import java.time.Instant;
 import java.util.Map;

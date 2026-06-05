@@ -1,8 +1,8 @@
-package com.eduvariant.controller;
+package org.example.controller;
 
-import com.eduvariant.dto.VariantRequestDto;
-import com.eduvariant.dto.VariantResponseDto;
-import com.eduvariant.service.VariantService;
+import org.example.dto.VariantRequestDto;
+import org.example.dto.VariantResponseDto;
+import org.example.service.VariantService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/variants")

@@ -1,8 +1,9 @@
-package com.eduvariant.service;
+package org.example.service;
 
 import com.eduvariant.dto.VariantRequestDto;
 import com.eduvariant.dto.VariantResponseDto;
 import com.eduvariant.exception.CloudSyncException;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Service
 public class VariantService {
 
-    public VariantResponseDto generateVariant(VariantRequestDto request) {
+    public org.example.dto.VariantResponseDto generateVariant(org.example.dto.@Valid @org.jetbrains.annotations.UnknownNullability VariantRequestDto request) {
         Integer min = request.parameters().getOrDefault("min_value", 0);
         Integer max = request.parameters().getOrDefault("max_value", 0);
         if (min > max) {
