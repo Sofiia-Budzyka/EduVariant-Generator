@@ -1,9 +1,8 @@
 package org.example.service;
 
-import com.eduvariant.dto.VariantRequestDto;
-import com.eduvariant.dto.VariantResponseDto;
-import com.eduvariant.exception.CloudSyncException;
-import jakarta.validation.Valid;
+import org.example.dto.VariantRequestDto;
+import org.example.dto.VariantResponseDto;
+import org.example.exception.CloudSyncException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -13,7 +12,8 @@ import java.util.UUID;
 @Service
 public class VariantService {
 
-    public org.example.dto.VariantResponseDto generateVariant(org.example.dto.@Valid @org.jetbrains.annotations.UnknownNullability VariantRequestDto request) {
+    public VariantResponseDto generateVariant(VariantRequestDto request) {
+        // Симуляція валідації бізнес-логіки
         Integer min = request.parameters().getOrDefault("min_value", 0);
         Integer max = request.parameters().getOrDefault("max_value", 0);
         if (min > max) {
@@ -22,6 +22,7 @@ public class VariantService {
 
         String variantId = "var-" + UUID.randomUUID().toString().substring(0, 8);
 
+        // Симуляція помилки токена хмари (для Тест-кейсу 3)
         if (request.cloudSync() && "expired_token".equals(request.templateId())) {
             throw new CloudSyncException("Google Drive OAuth token expired");
         }

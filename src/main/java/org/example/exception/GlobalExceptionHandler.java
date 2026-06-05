@@ -1,4 +1,4 @@
-package com.eduvariant.exception;
+package org.example.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
-    @ExceptionHandler(com.eduvariant.exception.CloudSyncException.class)
-    public ResponseEntity<Map<String, String>> handleCloudSyncException(com.eduvariant.exception.CloudSyncException ex) {
+    @ExceptionHandler(CloudSyncException.class)
+    public ResponseEntity<Map<String, String>> handleCloudSyncException(CloudSyncException ex) {
         Map<String, String> response = new HashMap<>();
         response.put("status", "accepted");
         response.put("sync_status", "failed");
