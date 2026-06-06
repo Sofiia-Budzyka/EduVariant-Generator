@@ -18,14 +18,13 @@ import java.util.Map;
 public class VariantController {
 
     private final VariantService variantService;
-
-    // Ось цей конструктор ми додали вручну замість Lombok:
     public VariantController(VariantService variantService) {
         this.variantService = variantService;
     }
 
     @PostMapping("/generate")
     @Operation(summary = "Генерує новий варіант завдання та експортує у хмару")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Успішно створено")
     public ResponseEntity<?> generateVariant(@Valid @RequestBody VariantRequestDto request) {
         try {
             VariantResponseDto response = variantService.generateVariant(request);
