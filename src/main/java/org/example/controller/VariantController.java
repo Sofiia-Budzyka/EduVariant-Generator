@@ -6,21 +6,23 @@ import org.example.service.VariantService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/variants")
-@RequiredArgsConstructor
 @Tag(name = "Variant Generator", description = "API для генерації PDF завдань")
 public class VariantController {
 
     private final VariantService variantService;
+
+    // Ось цей конструктор ми додали вручну замість Lombok:
+    public VariantController(VariantService variantService) {
+        this.variantService = variantService;
+    }
 
     @PostMapping("/generate")
     @Operation(summary = "Генерує новий варіант завдання та експортує у хмару")
